@@ -1,0 +1,43 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_urls static admin_list %}
+
+{% block extrastyle %}
+   {{ block.super }}
+   <link rel="stylesheet" href="{% static "admin/css/changelists.css" %}">
+{% endblock %}
+
+{% block content %}
+<h1> Παρουσίες μαθήματος {{ course_obj.name }} </h1> 
+<h2>Total events: {{ total_course_events }} </h2>
+<br>
+<div id="changelist">
+   <table id="result_list">
+   <thead>
+      <tr>
+         <th scope="col" class="column-__str__">
+            <div class="text"><span>Student</span></div>
+            <div class="clear"></div>
+         </th>
+         <th scope="col" class="column-__str__">
+            <div class="text"><span>Attendances</span></div>
+            <div class="clear"></div>
+         </th>
+      </tr>
+      </thead>
+   <tbody>
+      {% for sd in student_data %}
+         <tr>
+            <td scope="col" class="column-__str__">
+               <div class="text"><span> 
+                  {{ sd.student.first_name }} {{ sd.student.last_name }} 
+               </span></div>
+            </td>
+            <td scope="col" class="column-__str__">
+               <div class="text"><span> {{ sd.attendances }} </span></div>
+            </td>
+         </tr>
+      {% endfor %}
+   </tbody>
+   </table>
+</div>
+{% endblock %}

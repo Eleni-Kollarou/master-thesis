@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block middle %}
+	<h2>Όλα τα μαθήματα</h2>
+
+	<ul class="list-group">
+		{% for course in courses %}
+			<li class="list-group-item my-1">
+				<a href="{% url 'course' course.code %}">
+					<h4> {{ course.name }} </h4> 
+				</a>
+			</li>
+		{% endfor %}
+	</ul>
+{% endblock %}
